@@ -1,16 +1,31 @@
 {
-  "name": "Portal Kierowcy",
-  "short_name": "Portal",
-  "start_url": ".",
-  "display": "standalone",
-  "background_color": "#1a1a1a",
-  "theme_color": "#ccff33",
+  "short_name": "Trasy CEVA",
+  "name": "Portal Kierowcy CEVA",
+  "description": "Harmonogram i trasy kierowców CEVA",
   "icons": [
     {
-      "src": "Ceva.png",
-      "sizes": "1024x1024",
+      "src": "ceva.png",
       "type": "image/png",
+      "sizes": "1024x1024",
       "purpose": "any maskable"
+    },
+    {
+      "src": "ceva.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "ceva.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
     }
-  ]
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1a1a1a",
+  "theme_color": "#ccff33",
+  "scope": "/"
 }
