@@ -5,10 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Portal Kierowcy</title>
   
-  <!-- Ikony i Manifest -->
-  <link rel="icon" href="Ceva.png?v=4" type="image/png">
-  <link rel="apple-touch-icon" href="Ceva.png?v=4">
-  <link rel="manifest" href='data:application/manifest+json;utf8,{"name":"Portal Kierowcy","short_name":"Portal","start_url":".","display":"standalone","background_color":"#1a1a1a","theme_color":"#ccff33","icons":[{"src":"Ceva.png?v=4","sizes":"192x192","type":"image/png"},{"src":"Ceva.png?v=4","sizes":"512x512","type":"image/png"}]}'>
+  <!-- Blokada pamięci podręcznej -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <!-- Konfiguracja ikon (Wersja v=7 wymusi odświeżenie) -->
+  <link rel="icon" href="Ceva.png?v=7" type="image/png">
+  <link rel="apple-touch-icon" href="Ceva.png?v=7">
+  
+  <!-- Manifest dla Androida -->
+  <link rel="manifest" href='data:application/manifest+json;utf8,{"name":"Portal Kierowcy","short_name":"Portal","start_url":".","display":"standalone","background_color":"#1a1a1a","theme_color":"#ccff33","icons":[{"src":"Ceva.png?v=7","sizes":"192x192","type":"image/png"},{"src":"Ceva.png?v=7","sizes":"512x512","type":"image/png"}]}'>
 
   <style>
     body, html { 
@@ -28,7 +35,6 @@
   </style>
 </head>
 <body>
-  <!-- TUTAJ WKLEJ SWÓJ LINK POMIĘDZY CUDZYSŁÓW -->
-  <iframe src="TU_WSTAW_SWÓJ_LINK_Z_GOOGLE_APPS_SCRIPT"></iframe>
+  <iframe src="https://script.google.com/macros/s/AKfycbwjRdvUnn4KuBTtp6Rnp-BFpS4AJkYvR_5et7hJsTSc2dFGfYfO_9sJYYdh21fEqJWC/exec"></iframe>
 </body>
 </html>
