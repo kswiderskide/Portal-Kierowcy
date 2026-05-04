@@ -52,7 +52,7 @@
 </div>
 
   <script>
-    let deferredPrompt;
+let deferredPrompt;
   const installBanner = document.getElementById('install-banner');
   const installButton = document.getElementById('install-button');
   const rejectButton = document.getElementById('reject-button');
@@ -85,8 +85,8 @@
     if (dontAskCheckbox.checked) {
       localStorage.setItem('pwa_ignore_install', 'true');
     }
-    installBanner.style.display = 'none';
-  });
+    installBanner.style.display = 'none'; // <--- TUTAJ CHOWAMY PASEK
+  }); // <--- TUTAJ ZAMYKAMY FUNKCJĘ
   </script>
 </body>
 </html>
