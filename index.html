@@ -42,8 +42,7 @@
 </head>
 <body>
 
-  <iframe src="https://script.google.com/macros/s/AKfycbwjRdvUnn4KuBTtp6Rnp-BFpS4AJkYvR_5et7hJsTSc2dFGfYfO_9sJYYdh21fEqJWC/exec"></iframe>
-
+  <iframe src="https://script.google.com/macros/s/AKfycbzGQDm_KDkVyK-QjVUWyru0eNe8k3zR1jjjJsKvIF_AcGI69ZncaDBNGXMmsNYyI8jU/exec" allow="screen-wake-lock" style="width:100%; height:100%; border:none;"></iframe>
  <!-- PASEK INSTALACJI HTML (Z wymuszonym wyglądem checkboxa) -->
 <div id="install-banner" style="display: none; background-color: #333; color: white; padding: 15px; position: fixed; bottom: 0; width: 100%; z-index: 9999; text-align: center; border-top: 2px solid #ccff33; font-family: Arial, sans-serif;">
   <span style="display: block; margin-bottom: 10px;">Chcesz zainstalować aplikację TRASY?</span>
@@ -108,6 +107,29 @@
       });
     }
   });
+  // --- BLOKADA PUSTYCH GODZIN (MYSZKA I DOTYK) ---
+  const poleGodzin = document.getElementById('hourSelect');
+  if (poleGodzin) {
+    function zablokujGodziny(e) {
+      const trasa = document.getElementById('routeSelect').value;
+      if (!trasa || trasa === "") {
+        e.preventDefault(); 
+        this.blur(); // Magiczny składnik - natychmiast zamyka listę na telefonie!
+        pokazAlert("WYBIERZ NAJPIERW TRASĘ!"); 
+      }
+    }
+    
+    // Złapie każde możliwe "dotknięcie" i próbę podświetlenia
+    poleGodzin.addEventListener('mousedown', zablokujGodziny);
+    poleGodzin.addEventListener('touchstart', zablokujGodziny);
+    poleGodzin.addEventListener('focus', zablokujGodziny); 
+  }
+    
+    // Podpinamy nasłuchiwanie dla komputerów i telefonów
+    poleGodzin.addEventListener('mousedown', zablokujGodziny);
+    poleGodzin.addEventListener('touchstart', zablokujGodziny); // Kluczowe dla ekranów dotykowych!
+    poleGodzin.addEventListener('click', zablokujGodziny);
+  }
 </script>
 </body>
 </html>
