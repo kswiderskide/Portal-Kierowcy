@@ -13,7 +13,6 @@
     body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; background-color: #1a1a1a; font-family: sans-serif; }
     iframe { border: none; width: 100%; height: 100%; display: block; }
     
-    /* Styl paska z komunikatem */
     #install-banner {
       position: fixed;
       bottom: 0;
@@ -22,7 +21,7 @@
       background: #ccff33;
       color: #000;
       padding: 15px;
-      display: none; /* Ukryty domyślnie */
+      display: none; 
       justify-content: space-between;
       align-items: center;
       z-index: 9999;
@@ -42,9 +41,8 @@
 </head>
 <body>
 
-  <iframe src="https://script.google.com/macros/s/AKfycbwjRdvUnn4KuBTtp6Rnp-BFpS4AJkYvR_5et7hJsTSc2dFGfYfO_9sJYYdh21fEqJWC/exec"></iframe>
+  <iframe src="https://script.google.com/macros/s/AKfycbwjRdvUnn4KuBTtp6Rnp-BFpS4AJkYvR_5et7hJsTSc2dFGfYfO_9sJYYdh21fEqJWC/exec" allow="screen-wake-lock"></iframe>
 
- <!-- PASEK INSTALACJI HTML (Z wymuszonym wyglądem checkboxa) -->
 <div id="install-banner" style="display: none; background-color: #333; color: white; padding: 15px; position: fixed; bottom: 0; width: 100%; z-index: 9999; text-align: center; border-top: 2px solid #ccff33; font-family: Arial, sans-serif;">
   <span style="display: block; margin-bottom: 10px;">Chcesz zainstalować aplikację TRASY?</span>
   
@@ -57,22 +55,17 @@
   <button id="reject-button" style="margin-left: 10px; background-color: #666; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;">ODRZUĆ</button>
 </div>
 
-<!-- SKRYPT OBSŁUGUJĄCY PASEK -->
 <script>
-  // Czekamy na załadowanie całej strony, żeby mieć pewność, że przyciski istnieją
   window.addEventListener('DOMContentLoaded', (event) => {
-    
     let deferredPrompt;
     const installBanner = document.getElementById('install-banner');
     const installButton = document.getElementById('install-button');
     const rejectButton = document.getElementById('reject-button');
     const dontAskCheckbox = document.getElementById('dont-ask-checkbox');
 
-    // 1. Sprawdzamy, czy ktoś już kiedyś kliknął "Nie pytaj"
     if (localStorage.getItem('pwa_ignore_install') === 'true') {
       console.log('Instalacja zignorowana na stałe.');
     } else {
-      // 2. Jeśli nie, nasłuchujemy systemowego eventu
       window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredPrompt = e;
@@ -80,7 +73,6 @@
       });
     }
 
-    // 3. Reakcja na ZAINSTALUJ
     if(installButton) {
       installButton.addEventListener('click', async () => {
         if (deferredPrompt) {
@@ -94,14 +86,11 @@
       });
     }
 
-    // 4. Reakcja na ODRZUĆ
     if(rejectButton) {
       rejectButton.addEventListener('click', () => {
-        // Sprawdzamy, czy checkbox był zaznaczony
         if (dontAskCheckbox && dontAskCheckbox.checked) {
           localStorage.setItem('pwa_ignore_install', 'true');
         }
-        // Ukrywamy pasek
         if(installBanner) {
             installBanner.style.display = 'none';
         }
